@@ -1,5 +1,6 @@
 
 export interface Enemy {
+  name?: string;
   type: EnemyType,
   tier: number,
 }

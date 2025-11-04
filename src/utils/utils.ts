@@ -19,3 +19,15 @@ export function getThreat(partyTier: number, enemy: Enemy): number {
 export function getTotalThreat(partyTier: number, enemies: Enemy[]): number {
   return _.sum(_.map(enemies, (enemy: Enemy) => getThreat(partyTier, enemy)))
 }
+
+
+export type ThreatLevel = 'easy' | 'medium' | 'hard';
+
+export function getCurrentThreatLevel(partySize: number, totalThreat: number): ThreatLevel {
+  if (totalThreat <= partySize * .5) {
+    return 'easy';
+  } else if (totalThreat >= partySize * 1.5) {
+    return 'hard';
+  }
+  return 'medium';
+}
